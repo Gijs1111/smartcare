@@ -11,27 +11,38 @@
         android:id="@+id/btnAssistentie"
         android:layout_width="224dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="41dp"
+        android:layout_marginBottom="312dp"
         android:background="@color/colorPrimary"
         android:text="Vraag om assistentie"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/btnSpoed"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/btnSpoed"
         android:layout_width="224dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="49dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/holo_red_dark"
         android:text="Spoedoproep"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/btnChat"
+        app:layout_constraintBottom_toTopOf="@+id/tvEmailDisplay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAssistentie" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="62dp"
+        android:text="Testbutton"
+        android:theme="@style/PrimaryFlatButton"
+        app:layout_constraintBottom_toTopOf="@+id/btnAssistentie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnChat"
@@ -44,7 +55,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSpoed" />
+        app:layout_constraintTop_toBottomOf="@+id/tvEmailDisplay" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -62,24 +73,27 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="54dp"
+        android:layout_marginTop="24dp"
         android:text="Ingelogd als:"
         android:textColor="@android:color/white"
         android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAssistentie"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvEmailDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="186dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="18dp"
         android:text="..."
         android:textColor="@android:color/white"
         android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnChat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSpoed" />
 
 </android.support.constraint.ConstraintLayout>

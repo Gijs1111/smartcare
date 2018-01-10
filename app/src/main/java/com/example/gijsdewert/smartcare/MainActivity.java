@@ -1,5 +1,6 @@
 package com.example.gijsdewert.smartcare;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText tbEmail;
     private EditText tbPassword;
 
+    private Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Firebase instance
         mAuth = FirebaseAuth.getInstance();
+
+        //Context
+        context = getApplicationContext();
     }
 
     @Override
@@ -51,27 +58,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         System.out.println("Click");
         switch (view.getId()) {
             case R.id.btnLogin:
-                mAuth.signInWithEmailAndPassword(tbEmail.getText().toString(), tbPassword.getText().toString())
-                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    System.out.println("Wel");
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Log.d(TAG, "signInWithEmail:success");
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                                    intent.putExtra("email", user.getEmail());
-                                    MainActivity.this.startActivity(intent);
-
-                                } else {
-                                    System.out.println("Niet");
-                                    // If sign in fails, display a message to the user.
-                                    Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                    updateUI(null);
+                if (!TextUtils.isEmpty(tbEmail.getText().toString()) && !TextUtils.isEmpty(tbPassword.getText().toString())) {
+                    mAuth.signInWithEmailAndPassword(tbEmail.getText().toString(), tbPassword.getText().toString())
+                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                                        intent.putExtra("email", user.getEmail());
+                                        MainActivity.this.startActivity(intent);
+                                        Toast toast = Toast.makeText(context, "Welkom " + user.getEmail(), Toast.LENGTH_SHORT);
+                                        toast.show();
+                                    } else {
+                                        Toast toast = Toast.makeText(context, "Verkeerde inloggegevens.", Toast.LENGTH_SHORT);
+                                        toast.show();
+                                        updateUI(null);
+                                    }
                                 }
-                            }
-                        });
+                            });
+                }
+                else {
+                    Toast toast = Toast.makeText(context, "Graag alle velden invullen", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
                 break;
             case R.id.btnRegister:
                 if (!TextUtils.isEmpty(tbEmail.getText().toString()) && !TextUtils.isEmpty(tbPassword.getText().toString())) {
@@ -79,13 +89,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                System.out.println("Wel");
-                                FirebaseUser user = mAuth.getCurrentUser();
+                                Toast toast = Toast.makeText(context, "Uw account is geregistreerd.", Toast.LENGTH_SHORT);
+                                toast.show();
                             } else {
-                                System.out.println("Niet");
+                                Toast toast = Toast.makeText(context, "Registreren is niet gelukt.", Toast.LENGTH_SHORT);
+                                toast.show();
                             }
                         }
                     });
+                } else {
+                    Toast toast = Toast.makeText(context, "Graag alle velden invullen", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
                 break;
         }

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "934479537681",
+    "firebase_url": "https://smartcare-722ae.firebaseio.com",
+    "project_id": "smartcare-722ae",
+    "storage_bucket": "smartcare-722ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934479537681:android:3326489841e9193d",
+        "android_client_info": {
+          "package_name": "com.example.gijsdewert.smartcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934479537681-79utk9od101dps940dn6scbgij9l6cqt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gijsdewert.smartcare",
+            "certificate_hash": "8fe95c727e7e0a685927f533d2eb3041222f8b83"
+          }
+        },
+        {
+          "client_id": "934479537681-s56td11ocac4rulqsph663uedd1t295o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSjclWpwymZHqEmgtNMV44uPi4_6ro-Jo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934479537681-s56td11ocac4rulqsph663uedd1t295o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

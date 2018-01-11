@@ -68,10 +68,6 @@ public class ChatActivity extends AppCompatActivity{
 
         mCurrentUser = mAuth.getCurrentUser();
 
-        //TESTING PURPOSE
-        System.out.println("Naam:");
-        System.out.println(mAuth.getCurrentUser().getEmail());
-
         final String messageValue = editMessage.getText().toString().trim();
         if (!TextUtils.isEmpty(messageValue)) {
             final DatabaseReference newPost = mDatabase.push();
@@ -80,7 +76,7 @@ public class ChatActivity extends AppCompatActivity{
             newPost.child("currentTime").setValue(Calendar.getInstance().getTime().toString());
         }
 
-        mMessageList.scrollToPosition(mMessageList.getAdapter().getItemCount());
+        mMessageList.smoothScrollToPosition(mMessageList.getAdapter().getItemCount()-1);
     }
 
     @Override
